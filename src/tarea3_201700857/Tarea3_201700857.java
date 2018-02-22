@@ -47,11 +47,11 @@ public class Tarea3_201700857 {
     public static void menu1(){
         
         int b,i;
+        String usuario[] = new String[5];
         Scanner entrada = new Scanner(System.in);
         String m1[] = {"1.Ingresar usuarios","2.Mostrar usuarios ascendente","3.Mostrar usuarios descendente","4.Menú Principal"};
-        String usuario[] = new String[5];
-        System.out.println("///////////////////////////////");
-        for (String menu2:m1)
+        do{ System.out.println("///////////////////////////////");
+            for (String menu2:m1)//utilice el do puesto que cuando terminaba un case y lo mandaba a volver a menu1 las variables se perdían en el viaje
             System.out.println(menu2);
         System.out.println("///////////////////////////////");
         b = entrada.nextInt();
@@ -88,35 +88,44 @@ public class Tarea3_201700857 {
                 }
                 System.out.println("Volviendo a Usuarios");
                 System.out.println("///////////////////////////////");
-                menu1();
+                              
+               break;//coloque break para evitar que se ejecute el case 2 al terminar el case 1
             case 2://Imprime los usuarios en orden invertido al que fue ingresado
                 System.out.println("///////////////////////////////");
-                for (int x=usuario.length-1;x>=0;x--){
+             for (int x=usuario.length-1;x>=0;x--){
                 System.out.println(usuario[x]);
                 }
                 System.out.println("///////////////////////////////");
-                menu1();
+                
+                break;//coloque break para evitar que se ejecute el case 3 al terminar el case 2
             case 3://Imprime los usuarios en orden en que fueron ingresados
                 System.out.println("///////////////////////////////");
                 for (i = 0;i<usuario.length;i++){
                     System.out.println(usuario[i]);
                 }
                 System.out.println("///////////////////////////////");
-                menu1();
+               
+                break;//coloque break para evitar que se ejecute el case 4 al terminar el case 3
             case 4://Permite volver al menu principal
                 menuprincipal();
+                default:
+                    System.out.println("///////////////////////////////");
+                    System.out.println("El número ingresado es incorrecto");
+                    break;
                 }   
+        } while(b!=4);
         }
     public static void menu2(){
         Scanner entrada=new Scanner(System.in);
-        double num=0;
-        int c,replica;
-        
+        int num=0;
+        int c;
+        int cont=0;
         String m2[] = {"1.Ingresar número","2.Mostrar número de dígitos","4.Menú Principal"};
-        for (String z:m2)
-            System.out.println(z);
+        do{ System.out.println("///////////////////////////////");
+            for (String menu2:m2)
+            System.out.println(menu2);
+            System.out.println("///////////////////////////////");
         c = entrada.nextInt();
-        double y=0;
         switch (c){
                 case 1://Permite ingresar el numero deseado entre 0 y 100000
                     System.out.println("///////////////////////////////");
@@ -125,33 +134,18 @@ public class Tarea3_201700857 {
                     while (num<0||num>100000){
                         System.out.println("El numero ingresado es menor a 0 o mayor a 100000 por favor ingrese un numero ");
                         num = entrada.nextInt();
-                        y=num;
                     }
-                    int cont=0;
+                    System.out.println("El número que usted ingresó es "+num);
+                    break;//coloco el break para que cuando case 1 termine no se ejecute atuomaticamente case 2
+                    
+                case 2://Imprime la cantidad de dígitos que tiene el número
                     while (num>0){
                     num/=10;
                     cont++;}
                     System.out.println("///////////////////////////////");
-                    for (String z:m2)
-            System.out.println(z);
-                    replica=entrada.nextInt();
-                    switch (replica){
-                        case 1:
-                            menu2();
-                        case 2:
-                            System.out.println("///////////////////////////////");
-                    System.out.println("El número tiene"+cont);
-                    
+                    System.out.println("El número tiene "+cont);
                     System.out.println("///////////////////////////////");
-                    menu2();
-                    }
-                    menu2();
-                case 2://Imprime la cantidad de dígitos que tiene el número
-                    System.out.println("///////////////////////////////");
-                    System.out.println("El número tiene"+y);
-                    
-                    System.out.println("///////////////////////////////");
-                    menu2();
+                    break;
                 case 4://Permite volver al menu principal
                     menuprincipal();
                 default:
@@ -159,6 +153,58 @@ public class Tarea3_201700857 {
                     System.out.println("El número ingresado es incorrecto");
                     menu2();
         } 
+            }while(c!=4);
             }
+    public static void orden(){
+        Scanner entrada = new Scanner(System.in);
+        int ele=0;
+        String m3 [] = {"1.Ingresar números","2.Mostrar ordenados","4.Menú Principal"};
+        int ord[]= new int[3];
+        do {System.out.println("///////////////////////////////");
+        for (String menu3:m3)
+        System.out.println(menu3);
+        System.out.println("///////////////////////////////");
+        ele = entrada.nextInt();
+        switch (ele){
+            case 1:
+                System.out.println("///////////////////////////////");
+                System.out.println("Ingrese el primer número");
+                ord[0]=entrada.nextInt();
+                System.out.println("Ingrese el segundo úmero");
+                ord[1]=entrada.nextInt();
+                System.out.println("Ingrese el tercer número");
+                ord[2]=entrada.nextInt();
+                System.out.println("Los números que ingreso fueron");
+                for (int num:ord)
+                    System.out.println(num);
+                break;
+            case 2:
+//                if (ord[0]>ord[1]&&ord[0]>ord[2]){
+//                    System.out.println("El primer número es "+ord[0]);
+//                }else if (ord[1]>ord[0]&&ord[1]>ord[2]){
+//                    System.out.println("El primer número es "+ord[1]);
+//                } else if (ord[2]>ord[0]&&ord[2]>ord[1]){
+//                    System.out.println("El primer número es "+ord[2]);
+//                            }
+                if (ord[0]>ord[1]&&ord[0]<ord[2]){
+                    System.out.println("El primer número es "+ord[2]);
+                    System.out.println("El segundo número es "+ord[0]);
+                    System.out.println("El tercer número es "+ord[1]);
+                }else if (ord[1]>ord[0]&&ord[1]<ord[2]){
+                    System.out.println("El primer número es "+ord[2]);
+                    System.out.println("El segundo número es "+ord[1]);
+                    System.out.println("El tercer número es "+ord[0]);
+                }else if (ord[2]>ord[0]&&ord[2]<ord[1]);{
+                    System.out.println("El primer número es "+ord[1]);
+                    System.out.println("El segundo número es "+ord[2]);
+                    System.out.println("El tercer número es "+ord[0]);
+                }else if ()
+                    
+                
+                
+        }
+        }while (ele!=4);
+        
+        }
     }
 
