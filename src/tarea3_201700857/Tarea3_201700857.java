@@ -36,6 +36,12 @@ public class Tarea3_201700857 {
             case 2://Abre el menú de números
                 System.out.println("///////////////////////////////");
                 menu2();
+            case 3://abre el menú de orden de números
+                System.out.println("///////////////////////////////");
+                orden();
+            case 4:
+                System.out.println("///////////////////////////////");
+                menu4();
             case 5:
                 System.exit(0);
             default://En caso de no poner un número correcto da la oportunidad de abrir denuevo el programa
@@ -167,13 +173,22 @@ public class Tarea3_201700857 {
         ele = entrada.nextInt();
         switch (ele){
             case 1:
+                System.out.println("Ingrese 3 números enteros de distinta denominación");
                 System.out.println("///////////////////////////////");
                 System.out.println("Ingrese el primer número");
                 ord[0]=entrada.nextInt();
                 System.out.println("Ingrese el segundo úmero");
                 ord[1]=entrada.nextInt();
+                while (ord[1]==ord[0]){
+                    System.out.println("El número que ha ingresado ya existe por favor ingrese un número distinto");
+                    ord[1]=entrada.nextInt();
+                }
                 System.out.println("Ingrese el tercer número");
                 ord[2]=entrada.nextInt();
+                while (ord[2]==ord[1]||ord[2]==ord[0]){
+                    System.out.println("El número que ha ingresado ya existe por favor ingrese un número distinto");
+                    ord[2]=entrada.nextInt();
+                }
                 System.out.println("Los números que ingreso fueron");
                 for (int num:ord)
                     System.out.println(num);
@@ -194,17 +209,141 @@ public class Tarea3_201700857 {
                     System.out.println("El primer número es "+ord[2]);
                     System.out.println("El segundo número es "+ord[1]);
                     System.out.println("El tercer número es "+ord[0]);
-                }else if (ord[2]>ord[0]&&ord[2]<ord[1]);{
+                }else if (ord[2]>ord[0]&&ord[2]<ord[1]){
                     System.out.println("El primer número es "+ord[1]);
                     System.out.println("El segundo número es "+ord[2]);
                     System.out.println("El tercer número es "+ord[0]);
-                }else if ()
-                    
-                
-                
+                }else if (ord[2]>ord[1]&&ord[2]<ord[0]){
+                    System.out.println("El primer número es "+ord[0]);
+                    System.out.println("El segundo número es "+ord[2]);
+                    System.out.println("El tercer número es "+ord[1]);
+                }else if (ord[1]>ord[2]&&ord[1]<ord[0]){
+                    System.out.println("El primer número es"+ord[0]);
+                    System.out.println("El segundo número es "+ord[1]);
+                    System.out.println("El tercer número es "+ord[2]);
+                }else if (ord[0]>ord[2]&&ord[0]<ord[1]){
+                    System.out.println("El primer número es "+ord[1]);
+                    System.out.println("El segundo número es "+ord[0]);
+                    System.out.println("El tercer número es "+ord[2]);
+                }
+                break;
+            case 4:
+                menuprincipal();
+            default:
+                System.out.println("///////////////////////////////");
+                System.out.println("El número ingresado es incorrecto");
+                break;
         }
         }while (ele!=4);
         
         }
+    public static void menu4(){
+        int cont = 1;
+        int op = 0;
+        int fila = 0;
+        int columna = 0;
+        String nombres[]=new String[6];
+        float matriz[][]=new float[6][5];
+//        matriz [0][0]=1;
+//        matriz [1][0]=2;
+//        matriz [2][0]=3;
+//        matriz [3][0]=4;
+//        matriz [4][0]=5;
+//        matriz [5][0]=6;
+//        matriz [0][5]=0;
+        matriz [1][4]=0;
+        matriz [2][4]=0;
+        matriz [3][4]=0;
+        matriz [4][4]=0;
+        matriz [5][4]=0;
+        Scanner entrada = new Scanner(System.in);
+        String m4[]={"1.Ingresar puntos","2.Obtener promedio de los puntos","4.Menú Principal"};
+        do {System.out.println("///////////////////////////////");
+            for (String prom:m4)
+            System.out.println(prom);
+            System.out.println("///////////////////////////////");
+        op = entrada.nextInt();
+        switch (op){
+            case 1:
+                System.out.println("Ingrese el nombre del primer estudiante");
+                nombres[0]=entrada.next();
+                System.out.println("Ingrese el nombre del segundo estudiante");
+                nombres[1]=entrada.next();
+                while(nombres[0].equals(nombres[1])){
+                    System.out.println("Ese nombre ya está ingresado por favor ingrese otro");
+                    nombres[1]=entrada.next();
+                }
+                System.out.println("Ingrese el nombre del tercer estudiante");
+                nombres[2]=entrada.next();
+                while(nombres[2].equals(nombres[0])||nombres[2].equals(nombres[1])){
+                    System.out.println("Ese nombre ya está ingresado por favor ingrese otro");
+                    nombres[2]=entrada.next();
+                }
+                System.out.println("Ingrese el nombre del cuarto estudiante");
+                nombres[3]=entrada.next();
+                while(nombres[3].equals(nombres[0])||nombres[3].equals(nombres[1])||nombres[3].equals(nombres[2])){
+                    System.out.println("Ese nombre ya está ingresado por favor ingrese otro");
+                    nombres[3]=entrada.next();
+                }
+                System.out.println("Ingrese el nombre del quinto estudiante");
+                nombres[4]=entrada.next();
+                while(nombres[4].equals(nombres[0])||nombres[4].equals(nombres[1])||nombres[4].equals(nombres[2])||nombres[4].equals(nombres[3])){
+                    System.out.println("Ese nombre ya está ingresado por favor ingrese otro");
+                    nombres[4]=entrada.next();
+                }
+                System.out.println("Ingrese el nombre del sexto estudiante");
+                nombres[5]=entrada.next();
+                while(nombres[5].equals(nombres[0])||nombres[5].equals(nombres[1])||nombres[5].equals(nombres[2])||nombres[5].equals(nombres[3])||nombres[5].equals(nombres[4])){
+                    System.out.println("Ese nombre ya está ingresado por favor ingrese otro");
+                    nombres[5]=entrada.next();
+                }
+                
+                for (fila=0;fila<matriz.length;fila++){
+                    System.out.println("Ingresando datos de "+nombres[fila]);
+                    for (columna=0;columna<matriz[fila].length-1;columna++){
+                        matriz[fila][columna]=entrada.nextInt();
+                    }
+                }
+                System.out.println("Los datos que usted ingresó fueron:\n");
+                System.out.println("///////////////////////////////");
+                for (int x=0;x<matriz.length;x++){
+                    System.out.print("");
+                    System.out.print(nombres[x]+"\t");
+                    for (int j=0;j<matriz[x].length;j++){
+                        System.out.print(matriz[x][j]);
+                        if (j!=matriz[x].length-1){System.out.print("\t");}
+                    }
+                    System.out.println("");
+                }
+                System.out.println("///////////////////////////////");
+                break;
+            case 2:
+                matriz[0][4]=(matriz[0][0]+matriz[0][1]+matriz[0][2]+matriz[0][3])/4;
+                matriz[1][4]=(matriz[1][0]+matriz[1][1]+matriz[1][2]+matriz[1][3])/4;        
+                matriz[2][4]=(matriz[2][0]+matriz[2][1]+matriz[2][2]+matriz[2][3])/4;
+                matriz[3][4]=(matriz[3][0]+matriz[3][1]+matriz[3][2]+matriz[3][3])/4;    
+                matriz[4][4]=(matriz[4][0]+matriz[4][1]+matriz[4][2]+matriz[4][3])/4;
+                matriz[5][4]=(matriz[5][0]+matriz[5][1]+matriz[5][2]+matriz[5][3])/4;
+                System.out.println("///////////////////////////////");
+                for (int w=0;w<matriz.length;w++){
+                    System.out.print("");
+                    System.out.print(nombres[w]+"\t");
+                    for (int r=0;r<matriz[w].length;r++){
+                        System.out.print(matriz[w][r]);
+                        if (r!=matriz[w].length-1){System.out.print("\t");}
+                    }
+                    System.out.println("");
+                }
+                System.out.println("///////////////////////////////");
+                break;
+            case 4:
+                menuprincipal();
+            default:
+                System.out.println("///////////////////////////////");
+                System.out.println("El número ingresado es incorrecto");
+            break;
+        }
+        }while (op!=4);
+    }
     }
 
