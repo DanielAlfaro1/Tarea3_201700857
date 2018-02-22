@@ -1,26 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tarea3_201700857;
 
 import java.util.Scanner;
 
-/**
- *
- * @author Bminas
- */
 public class Tarea3_201700857 {
 
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String[] args) {
        menuprincipal();
        
     }
-    public static void menuprincipal(){
+    public static void menuprincipal(){//Menu principal donde se colocaran todas las opciones
         Scanner entrada = new Scanner(System.in);
        int a;
         String mprincipal[] = {"1.Usuarios","2.Contador de dígitos","3.Tres números de mayor a menor","4.Calcular promedio","5.Salir"};
@@ -39,10 +29,10 @@ public class Tarea3_201700857 {
             case 3://abre el menú de orden de números
                 System.out.println("///////////////////////////////");
                 orden();
-            case 4:
+            case 4://abre el menú del promedio
                 System.out.println("///////////////////////////////");
                 menu4();
-            case 5:
+            case 5://Finaliza el programa
                 System.exit(0);
             default://En caso de no poner un número correcto da la oportunidad de abrir denuevo el programa
                 System.out.println("///////////////////////////////");
@@ -50,7 +40,7 @@ public class Tarea3_201700857 {
                 menuprincipal();
         }
         }
-    public static void menu1(){
+    public static void menu1(){//menu de los usuarios
         
         int b,i;
         String usuario[] = new String[5];
@@ -76,7 +66,7 @@ public class Tarea3_201700857 {
             
                 System.out.println("Ingerse el nombre del tercer usuario");
                 usuario[2] = entrada.next();
-                while (usuario[2].equals(usuario[0])||usuario[2].equals(usuario[1])){
+                while (usuario[2].equals(usuario[0])||usuario[2].equals(usuario[1])){//evitamos que se repitan los usuarios
                     System.out.println("Este usuario ya existe, debe ingresar otro");
                     usuario[2] = entrada.next();
                 }
@@ -121,7 +111,7 @@ public class Tarea3_201700857 {
                 }   
         } while(b!=4);
         }
-    public static void menu2(){
+    public static void menu2(){//Este es el menú de los dígitos
         Scanner entrada=new Scanner(System.in);
         int num=0;
         int c;
@@ -161,7 +151,7 @@ public class Tarea3_201700857 {
         } 
             }while(c!=4);
             }
-    public static void orden(){
+    public static void orden(){//Abre el menú de los numeros en orden
         Scanner entrada = new Scanner(System.in);
         int ele=0;
         String m3 [] = {"1.Ingresar números","2.Mostrar ordenados","4.Menú Principal"};
@@ -172,7 +162,7 @@ public class Tarea3_201700857 {
         System.out.println("///////////////////////////////");
         ele = entrada.nextInt();
         switch (ele){
-            case 1:
+            case 1://Permite ingresar los numeros
                 System.out.println("Ingrese 3 números enteros de distinta denominación");
                 System.out.println("///////////////////////////////");
                 System.out.println("Ingrese el primer número");
@@ -193,14 +183,7 @@ public class Tarea3_201700857 {
                 for (int num:ord)
                     System.out.println(num);
                 break;
-            case 2:
-//                if (ord[0]>ord[1]&&ord[0]>ord[2]){
-//                    System.out.println("El primer número es "+ord[0]);
-//                }else if (ord[1]>ord[0]&&ord[1]>ord[2]){
-//                    System.out.println("El primer número es "+ord[1]);
-//                } else if (ord[2]>ord[0]&&ord[2]>ord[1]){
-//                    System.out.println("El primer número es "+ord[2]);
-//                            }
+            case 2://Imprmie los números en orden de mayor a menor
                 if (ord[0]>ord[1]&&ord[0]<ord[2]){
                     System.out.println("El primer número es "+ord[2]);
                     System.out.println("El segundo número es "+ord[0]);
@@ -227,9 +210,9 @@ public class Tarea3_201700857 {
                     System.out.println("El tercer número es "+ord[2]);
                 }
                 break;
-            case 4:
+            case 4://Permite volver al menu principal
                 menuprincipal();
-            default:
+            default://en el caso que el usuario ingrese otro numero que no este definido, volvera al submenu
                 System.out.println("///////////////////////////////");
                 System.out.println("El número ingresado es incorrecto");
                 break;
@@ -237,20 +220,13 @@ public class Tarea3_201700857 {
         }while (ele!=4);
         
         }
-    public static void menu4(){
+    public static void menu4(){//El menú del promedio de notas
         int cont = 1;
         int op = 0;
         int fila = 0;
         int columna = 0;
         String nombres[]=new String[6];
         float matriz[][]=new float[6][5];
-//        matriz [0][0]=1;
-//        matriz [1][0]=2;
-//        matriz [2][0]=3;
-//        matriz [3][0]=4;
-//        matriz [4][0]=5;
-//        matriz [5][0]=6;
-//        matriz [0][5]=0;
         matriz [1][4]=0;
         matriz [2][4]=0;
         matriz [3][4]=0;
@@ -264,7 +240,7 @@ public class Tarea3_201700857 {
             System.out.println("///////////////////////////////");
         op = entrada.nextInt();
         switch (op){
-            case 1:
+            case 1://Ingresamos los datos en las variables
                 System.out.println("Ingrese el nombre del primer estudiante");
                 nombres[0]=entrada.next();
                 System.out.println("Ingrese el nombre del segundo estudiante");
@@ -317,7 +293,7 @@ public class Tarea3_201700857 {
                 }
                 System.out.println("///////////////////////////////");
                 break;
-            case 2:
+            case 2://Imprime la matriz con los promedios calculados
                 matriz[0][4]=(matriz[0][0]+matriz[0][1]+matriz[0][2]+matriz[0][3])/4;
                 matriz[1][4]=(matriz[1][0]+matriz[1][1]+matriz[1][2]+matriz[1][3])/4;        
                 matriz[2][4]=(matriz[2][0]+matriz[2][1]+matriz[2][2]+matriz[2][3])/4;
@@ -336,7 +312,7 @@ public class Tarea3_201700857 {
                 }
                 System.out.println("///////////////////////////////");
                 break;
-            case 4:
+            case 4://Vuelve al menu principal
                 menuprincipal();
             default:
                 System.out.println("///////////////////////////////");
